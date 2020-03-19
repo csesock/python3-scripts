@@ -29,7 +29,6 @@ def main() :
                 time.sleep(3)
                 choice = displayMenu()
                 
-
             elif subChoice == 2 :
                 # scrape darklyrics
                 darkUrl = createDarkUrl()
@@ -53,10 +52,6 @@ def main() :
         if choice == 4 :
             break
 
-
-            
-            
-
 def displayMenu() :
     print("------------------")
     print("1) Ping a web address")
@@ -66,7 +61,6 @@ def displayMenu() :
     print("------------------")
 
     choice = int(input("Enter your selection: "))
-
     return choice
 
 def displaySubmenu() :
@@ -78,19 +72,14 @@ def displaySubmenu() :
     print("-----------------------")
 
     subChoice = int(input("Enter your selection: "))
-
     return subChoice
-
-
 
 def pingSite(url) :
     # Send hit request and force utf-8 encoding.
     r = requests.get(url)
     if r.encoding != 'utf-8' :
         r.encoding = 'utf-8'
-
     return r
-
 
 def createDarkUrl() :
     band = input("Enter the band's lyrics to scrape: ")
@@ -102,25 +91,19 @@ def createDarkUrl() :
 
     # The finalized url. Fits the formattign of darklyrics headers.
     appendedUrl = "http://www.darklyrics.com/lyrics/" + band + "/" + album + ".html#1"
-
     return appendedUrl
-
 
 def createWikiUrl() :
     article = input("Enter the article to scrape : ")
     article = article.replace(" ", "_").capitalize()
 
     appendedUrl = 'https://en.wikipedia.org/wiki/' + article
-
     return appendedUrl
-
 
 def scrape(r) :
     # Create Beautiful Soup object containing all HTML.
     soup = BeautifulSoup(r.content, "lxml")
-
     return soup   
-
 
 def writeToFile(soup, class__) :
     fileTitle = input("Enter the file name to write to: ")
@@ -136,9 +119,6 @@ def writeToFile(soup, class__) :
 
     # Close the file.
     file.close()
-
-
-
 
 def scrapeUniqueSite(soup) :
     fileTitle = input("Enter the file name to write to: ")
@@ -156,27 +136,6 @@ def scrapeUniqueSite(soup) :
 
     # Close the file.
     file.close()
-    
-
-    
   
 if __name__ == '__main__' : 
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
