@@ -1,10 +1,13 @@
+## Script used to generate a report of open ip addresses from a zenmap port scan.
+## Used to find open directories.
+##
+
 from collections import deque
 import re
 
 #global variables
 pat = re.compile("^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$")
 current_server = deque(maxlen=5)
-
 
 def createServerReport() :
     counter = 0
@@ -31,4 +34,3 @@ def createServerReport() :
 
 if __name__ == "__main__":
     createServerReport()
-
